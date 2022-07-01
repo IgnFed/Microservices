@@ -1,5 +1,5 @@
 const bull = require("bull");
-const redis = { host: "192.168.0.119", port: "6379" };
+const redis = { host: "127.0.0.1", port: "6379" };
 const opts = {
 	redis,
 };
@@ -22,9 +22,9 @@ async function Create({ name, age, color }) {
 	}
 }
 
-async function FindOne({ name }) {
+async function FindOne({ id }) {
 	try {
-		const job = await queueFindOne.add({ name });
+		const job = await queueFindOne.add({ id });
 		const { statusCode, data, message } = await job.finished();
 		return { statusCode, data, message };
 	} catch (error) {
@@ -73,5 +73,4 @@ async function main() {
 	// console.clear();
 	View();
 }
-main();
 module.exports = { Create, FindOne, Update, Delete, View };

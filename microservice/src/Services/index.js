@@ -14,10 +14,10 @@ async function Create({ name, age, color }) {
 	}
 }
 
-async function FindOne({ name }) {
+async function FindOne(where = {}) {
 	try {
 		const { statusCode, message, data } = await Controllers.FindOne({
-			where: { name },
+			where,
 		});
 		return { statusCode, message, data };
 	} catch (error) {
@@ -60,5 +60,4 @@ async function View() {
 		return { statusCode: 500, message: error.toString() };
 	}
 }
-View();
 module.exports = { Create, FindOne, Delete, Update, View };

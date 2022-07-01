@@ -10,8 +10,7 @@ const {
 
 async function View(job, done) {
 	try {
-		console.log("dd");
-
+		console.log(job.id);
 		const { statusCode, data, message } = await Services.View({});
 		done(null, { statusCode, data, message });
 	} catch (e) {
@@ -54,8 +53,8 @@ async function Update(job, done) {
 
 async function FindOne(job, done) {
 	try {
-		const { name } = job.data;
-		const { statusCode, data, message } = await Services.FindOne({ name });
+		const { id } = job.data;
+		const { statusCode, data, message } = await Services.FindOne({ id });
 		done(null, { statusCode, data, message });
 	} catch (e) {
 		console.log("Adapters: queueFindOne", { error: e.toString() });
@@ -77,12 +76,10 @@ async function Delete(job, done) {
 async function run() {
 	try {
 		queueView.process(View);
-		queueView.add();
-
-		// queueCreate.process(Create);
-		// queueFindOne.process(FindOne);
-		// queueUpdate.process(Update);
-		// queueDelete.process(Delete);
+		queueCreate.process(Create);
+		queueFindOne.process(FindOne);
+		queueUpdate.process(Update);
+		queueDelete.process(Delete);
 	} catch (error) {
 		console.log(error);
 	}

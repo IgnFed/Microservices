@@ -39,7 +39,6 @@ async function Update({ name, age, color, id }) {
 
 async function Delete(where = {}) {
 	try {
-		console.log(where);
 		await Model.destroy({ where, logging: false });
 
 		return { statusCode: 200, data: "OK" };

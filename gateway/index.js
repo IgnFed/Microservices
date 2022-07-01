@@ -20,7 +20,6 @@ server.listen(80, () => {
 			try {
 				console.log("req:microservice:view");
 				const { statusCode, data, message } = await api.View();
-				console.log({ statusCode, data, message });
 				return io
 					.to(socket.id)
 					.emit("res:microservice:view", { statusCode, data, message });
