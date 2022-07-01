@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+
+    ports:
+      - 6379:6379
+
+  db:
+    image: postgres:13.7-alpine
+    restart: always
+
+    env_file:
+      - ./microservice/.env
+
+    ports:
+      - 5432:5432
