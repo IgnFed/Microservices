@@ -24,21 +24,13 @@ async function main() {
 			console.log("res:microservice:delete", { statusCode, data, message });
 		});
 
-		// setTimeout(() => {
-		// 	// socket.emit("req:microservice:create", { name: "Ignacio", age: 70, color: "pink" });
-		// 	// socket.emit("req:microservice:findOne", { id: 2 });
-		// 	// socket.emit("req:microservice:delete", { id: 4 });
-		// 	// socket.emit("req:microservice:update", { id: 3, age: 70 });
+		// setInterval(() => {
+		// socket.emit("req:microservice:create", { name: "Ignacio", age: 70, color: "pink" });
+		// socket.emit("req:microservice:findOne", { id: 2 });
+		// socket.emit("req:microservice:delete", { id: 4 });
+		// socket.emit("req:microservice:update", { id: 3, age: 70 });
 		// 	socket.emit("req:microservice:view", {});
-		// }, 300);
-
-		setInterval(() => {
-			// socket.emit("req:microservice:create", { name: "Ignacio", age: 70, color: "pink" });
-			// socket.emit("req:microservice:findOne", { id: 2 });
-			// socket.emit("req:microservice:delete", { id: 4 });
-			// socket.emit("req:microservice:update", { id: 3, age: 70 });
-			socket.emit("req:microservice:view", {});
-		}, 100);
+		// }, 100);
 	} catch (error) {
 		console.log(error);
 	}
